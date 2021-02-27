@@ -1,0 +1,124 @@
+
+Install-Package Microsoft.EntityFrameworkCore.SqlServer 
+en: Herramientas -> Administrador de Paquetes Nuget -> Consola del Administrador de Paquetes
+
+
+
+
+PASO 1: CREAR RULETA
+METODO: POST
+
+https://localhost:44332/Api/Roulette/InsertNewRoulette
+
+{
+    "IdUser": 1
+}
+
+
+
+------
+
+PASO 2: APERTURAR RULETA
+METODO: PUT
+
+https://localhost:44332/Api/Roulette/OpenRoulette/1
+
+
+
+-----
+
+PASO 3: APOSTAR EN LA RULETA
+METODO: POST
+
+https://localhost:44332/Api/Roulette/ToBet
+
+--- NOTA: POR CADA ToBet(apuesta) que se hace, por Roulette y por User (Cliente Jugador)
+--	Una vez que se juega la ruleta
+--	tiene que ir aumetando el parametro
+--	NberGames 1 en 1.
+ 
+
+---- 1) CLIENTES ID = 5 Y 4, APOSTANDO A LA Roulette 1, QUE POR ENDE ESTAMOS EN LA PRIMERA JUGADA = 1
+[
+    {
+        "IdRoulette": 1,
+        "NberGames": 1,
+        "IdPlayer": 5,
+        "KindBet": "NUMERO",
+        "ValueKindBet": "20",
+        "AmountBet": 200
+    },
+    {
+        "IdRoulette": 1,
+        "NberGames": 1,
+        "IdPlayer": 5,
+        "KindBet": "NUMERO",
+        "ValueKindBet": "30",
+        "AmountBet": 150
+    },
+    {
+        "IdRoulette": 1,
+        "NberGames": 1,
+        "IdPlayer": 5,
+        "KindBet": "COLOR",
+        "ValueKindBet": "ROJO",
+        "AmountBet": 300
+    },
+    {
+        "IdRoulette": 1,
+        "NberGames": 1,
+        "IdPlayer": 4,
+        "KindBet": "COLOR",
+        "ValueKindBet": "NEGRO",
+        "AmountBet": 100
+    },
+    {
+        
+        "IdRoulette": 1,
+        "NberGames": 1,
+        "IdPlayer": 4,
+        "KindBet": "COLOR",
+        "ValueKindBet": "ROJO",
+        "AmountBet": 200
+    },
+    {
+        "IdRoulette": 1,
+        "NberGames": 1,
+        "IdPlayer": 4,
+        "KindBet": "NUMERO",
+        "ValueKindBet": "11",
+        "AmountBet": 100
+    }
+]
+
+
+-----
+
+PASO 4: JUGAR LA RULETA, EL PRIMER JUEGO
+METODO: GET
+
+
+https://localhost:44332/Api/RouletteGames/PlayRoulette/1/1
+
+
+
+-----
+
+PASO 5: CERRAR LA RULETA
+METODO: GET
+
+https://localhost:44332/Api/Roulette/CloseRoulette/1
+
+
+
+
+PASO 6: LISTAR RULETAS
+METODO: GET
+
+https://localhost:44332/Api/Roulette/ListRoulette
+
+
+
+
+
+
